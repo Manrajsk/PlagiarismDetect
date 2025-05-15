@@ -1,17 +1,9 @@
-#!/usr/bin/env python3  #Shebang tells Unix-style systems to run this file with Python 3. Makes the script directly executable
+import re 
+import os
+import sys 
+from typing import List, Tuple 
 
-import re #Brings in Python’s “regular expressions” module for pattern matching and text manipulation. I
-#In this project, we use re.sub() to remove comments (#… and triple‐quoted blocks) and re.findall(r"\w+", code) to break code into tokens
-
-import os #lets us talk to the operating system: check if files exist, list directories, etc.
-
-import sys # sys gives low-level access to system functions—used here for exiting on error.
-
-from typing import List, Tuple #Imports type hints for lists and tuples.
-#Helps document that functions return List[str], Tuple[int,int], etc., which aids readability and tools.
-
-
-def colored_text(text: str, color_code: int) -> str: #Wraps any text in ANSI escape codes to color it in the terminal.
+def colored_text(text: str, color_code: int) -> str: 
     """Return colored text for terminal output."""
     return f"\033[{color_code}m{text}\033[0m"
 
@@ -33,7 +25,7 @@ def print_warning(text: str) -> None:
 
 def print_error(text: str) -> None:
     """Print text in red."""
-    print(colored_text(text, 91)) #Colour all types in specific colour by invoking coloured_text function
+    print(colored_text(text, 91)) 
 
 
 def preprocess_code(code: str) -> str:
@@ -41,7 +33,7 @@ def preprocess_code(code: str) -> str:
     Remove comments but preserve indentation and normalize whitespace.
     """
     # Remove triple-quoted strings/comments
-    code = re.sub(r'""".*?"""', '', code, flags=re.DOTALL) #flags=re.DOTALL makes the . match newlines too, so multi-line comments go away.
+    code = re.sub(r'""".*?"""', '', code, flags=re.DOTALL) 
     code = re.sub(r"'''.*?'''", '', code, flags=re.DOTALL)
 
     cleaned_lines = []
