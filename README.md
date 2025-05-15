@@ -14,7 +14,7 @@ This project implements a **Plagiarism Detection System** using core **Data Stru
 
 ## 🛠️ Technologies Used
 
-- **Language**: Python (can be ported to C++/Java)
+- **Language**: Python 
 - **Core Concepts**:
   - Dynamic Programming
   - Longest Common Subsequence (LCS)
